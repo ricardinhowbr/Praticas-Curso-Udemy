@@ -1,0 +1,45 @@
+<!-- arquivo com exemplos básicos de criação de elementos -->
+<!-- e 'add', 'clonando' e 'removendo' elementos na DOM a partir da API do javascript. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Modificando HTML #01</title>
+        <link rel='stylesheet' href='css/estilo.css'>
+    </head>
+
+    <body class='conteudo exercicio'>
+        <script>
+            const body = document.querySelector('body');
+
+            const div1 = document.createElement('div');
+            div1.classList.add('destaque');
+            div1.innerHTML = 'Primeiro';
+
+            const div2 = document.createElement('div');
+            div2.setAttribute('wm-atributo', 'valor aqui');
+            div2.innerHTML = 'segundo';
+
+            const p = document.createElement('p');
+            p.innerHTML = 'Terceiro elemento';
+            
+            const div3 = document.createElement('div');
+            div3.appendChild(p); // -> insere como ultimo elemento do container
+
+            body.appendChild(div1);
+            body.appendChild(div2);
+            body.appendChild(div3);
+
+            const texto = document.createTextNode('Antes...');
+            div3.insertBefore(texto, div3.childNodes[0]);
+
+            // -> passando 'true' como parâmetro, a função passa a clonar também
+            // -> os elementos que são 'filhos'
+            const div4 = div3.cloneNode(true);
+
+            body.appendChild(div4);
+            body.removeChild(div3);
+        </script>
+    </body>
+
+</html>
