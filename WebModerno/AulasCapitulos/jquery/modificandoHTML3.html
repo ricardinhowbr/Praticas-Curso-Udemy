@@ -13,13 +13,51 @@
     <div id='conteudo'></div>
 
     <script>
-        const pessoas = [
+        // $(document).ready(function() {});
+        $(function() {
+            MinhaResposta();
+            // RespostaProf();
+        });
+
+        const alunos = [
             { nome: 'Ana', nota: 9.1 },
             { nome: 'Bianca', nota: 8.4 },
             { nome: 'Carlos', nota: 7.6 },
             { nome: 'Julia', nota: 9.7 }
-        ]
-        
-        // ...
+        ];
+ 
+        function MinhaResposta() {
+            // -> Minha resposta do desafio.
+            const table = $('<table>').append(
+                '<tr>' + 
+                '<th>Nome</th>' + 
+                '<th>Nota</th></tr>');
+            
+            for(let a of alunos){
+                table.append(
+                    '<tr>' +
+                    `<td>${a.nome}</td>` +
+                    `<td>${a.nota}</td>` +
+                    '</tr>'
+                );
+            }
+
+            $('#conteudo').append(table);
+        }
+
+        function RespostaProf() {
+            const linhas = alunos.map(a => {
+                const tdNome = $('<td>').html(a.nome);
+                const tdNota = $('<td>').html(a.nota);
+
+                // return $('<tr>').append(tdNome).append(tdNota);
+                // return $('<tr>').append([tdNome, tdNota]);
+                return $('<tr>').append(tdNome, tdNota);
+            });
+
+            const table = $('<table>').append(linhas).css('border', 'solid 5px');
+
+            $('#conteudo').append(table);
+        }
     </script>
 </body>
